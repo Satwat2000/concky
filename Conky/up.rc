@@ -1,0 +1,60 @@
+conky.config = {
+-- Conky settings --
+    update_interval = 1,							--frissítési idővallum másodpercben
+    background = true,								--áttetsző háttér
+    cpu_avg_samples = 2,							--cpu pontosabb monitorozásához
+    net_avg_samples = 2,							--internet pontosabb monitorozása
+    diskio_avg_samples = 2, 						--meghajtó pontosabb monitorozásához
+    override_utf8_locale = true,					--karakterkódolás felülbírálása
+    double_buffer = true,							--nem villodzik az ablak
+    no_buffers  = true,
+    text_buffer_size = 256, 						--szöveg buffer mérete
+    imlib_cache_size = 10,
+    max_user_text = 15000,
+    format_human_readable = true,					--mértékegységek nem bájtokban
+
+-- Window specifications --
+    own_window = true,  							--saját ablakbeállítások bekapcsolása
+    own_window_type = 'normal',   					--ablaktípusok, override=ablakmenedzser szabályi nem vonatkoznak rá, desktop=díszítés nélküli panel=mindig felül,  dock=mindig felül, normal=normál
+    own_window_transparent = false,  				--conky ablak átlátszóvá válik
+    own_window_argb_visual = true,  				--átlátszó ablak
+    own_window_argb_value = 255,      				--átlátszóság mértéke 0-255
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	--ablak tulajdonságai below=alultartás skip_taskbar=tálca mellőzése undecorated=keret és gombok eltávolítása override=ablakkezelő felülbírálása sticky=minden munkaterületen
+    own_window_title = 'net_upload',
+    minimum_width = 734,        					--minimum szélesség
+    minimum_height = 250, 							--minimum magasság
+    alignment = 'top_left', 						--jobb felső sarokba igazít
+    gap_x = 1185,  								    --x irányba eltolás
+    gap_y = 0, 	    							    --y irányba eltolás
+
+-- Graphics settings --
+    draw_shades = false, 							--szöveg árnyékolása
+    draw_outline = false,							--körülrajzolás
+    draw_borders = false,							--téglalap alakú keretet rajzol
+    draw_graph_borders = false, 					--keret a grafikon köré
+    border_width = 0, 								--keret vastagsága
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+    
+-- Text settings --
+    use_xft = true, 								--élsimítás
+    font = 'Ubuntu:size=7',          				--alapértelmezett betűtípus
+    color0 = 'C8C8C8',								--előre meghatározott szín
+    color1 = 'c7282d',
+   
+    lua_load = '~/Conky/lua/upload.lua',
+    lua_draw_hook_pre = 'main_graph',
+};
+
+conky.text = [[
+${image ~/Conky/images/up.png -s 734x250}
+${goto 18}${voffset 38}${color0}${font Xolonium:size=10}${addr wlp2s0}
+${alignr 50}${voffset -15}${font Xolonium:size=8}NETWORK
+${alignc 201}${voffset 13}${font Xolonium:Bold:size=6}Speed
+${alignr 521}${voffset 10}${font Xolonium:size=8}${upspeed wlp2s0}
+${alignc 291}${voffset -1}${font Xolonium:bold:size=13}↑
+${alignc 291}UP
+${alignc 202}${voffset -29}${font Xolonium:Bold:size=6}Total
+${alignr 521}${voffset 11}${font Xolonium:size=8}${totalup wlp2s0}
+]];

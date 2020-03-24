@@ -1,0 +1,9 @@
+install:
+lm-sensors
+    settings: sudo sensors-detect
+cpufrequtils
+hddtemp
+    settings: sudo chmod u+s /usr/sbin/hddtemp
+jq
+curl
+font

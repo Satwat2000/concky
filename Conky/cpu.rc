@@ -1,0 +1,71 @@
+conky.config = {
+-- Conky settings --
+    update_interval = 1,							--frissítési idővallum másodpercben
+    background = true,								--áttetsző háttér
+    cpu_avg_samples = 2,							--cpu pontosabb monitorozásához
+    net_avg_samples = 2,							--internet pontosabb monitorozása
+    diskio_avg_samples = 2, 						--meghajtó pontosabb monitorozásához
+    override_utf8_locale = true,					--karakterkódolás felülbírálása
+    double_buffer = true,							--nem villodzik az ablak
+    no_buffers  = true,
+    text_buffer_size = 256, 						--szöveg buffer mérete
+    imlib_cache_size = 10,
+    max_user_text = 15000,
+    format_human_readable = true,					--mértékegységek nem bájtokban
+
+-- Window specifications --
+    own_window = true,  							--saját ablakbeállítások bekapcsolása
+    own_window_type = 'normal',   					--ablaktípusok, override=ablakmenedzser szabályi nem vonatkoznak rá, desktop=díszítés nélküli panel=mindig felül,  dock=mindig felül, normal=normál
+    own_window_transparent = true,  				--conky ablak átlátszóvá válik
+    own_window_argb_visual = true,  				--átlátszó ablak
+    own_window_argb_value = 255,      				--átlátszóság mértéke 0-255
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	--ablak tulajdonságai below=alultartás skip_taskbar=tálca mellőzése undecorated=keret és gombok eltávolítása override=ablakkezelő felülbírálása sticky=minden munkaterületen
+    own_window_title = 'cpu',
+    minimum_width = 1917,        					--minimum szélesség
+    minimum_height = 181, 							--minimum magasság
+    alignment = 'top_left', 						--jobb felső sarokba igazít
+    gap_x = 0,  								    --x irányba eltolás
+    gap_y = 455, 	    							    --y irányba eltolás
+
+-- Graphics settings --
+    draw_shades = false, 							--szöveg árnyékolása
+    draw_outline = false,							--körülrajzolás
+    draw_borders = false,							--téglalap alakú keretet rajzol
+    draw_graph_borders = false, 					--keret a grafikon köré
+    border_width = 0, 								--keret vastagsága
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+
+-- Text settings --
+    use_xft = true, 								--élsimítás
+    font = 'Ubuntu:size=7',          				--alapértelmezett betűtípus
+    color0 = 'C8C8C8',								--előre meghatározott szín
+    color1 = 'c7282d',
+
+    
+    lua_load = '~/Conky/lua/cpu.lua',
+    lua_draw_hook_pre = 'main_graph',
+};
+
+conky.text = [[
+${image ~/Conky/images/cpu.png -s 1917x181}
+${alignc 386}${voffset 30}${color0}${font Xolonium:Bold:size=7}CPU1 LOADED
+${alignc 386}${voffset 4}${font Xolonium:size=16}${cpu cpu1} %
+${alignc -381}${voffset -56}${font Xolonium:Bold:size=7}CPU3 LOADED
+${alignc -381}${voffset 4}${font Xolonium:size=16}${cpu cpu3} %
+${alignr 1048}${voffset -41}${font Xolonium:size=7}${exec echo "scale=1; $((`cpufreq-info -c 0 -f`)) / 1000 / 1000" | bc | awk '{printf "%1.1f\n", $0}'} GHz
+${alignr 1048}${voffset 7}${color1}${font Xolonium:size=7}${exec sensors | grep "Core 0:" | cut -c17-23}
+${alignc}${voffset -20}${color0}${font Xolonium:size=12}Central Processing Unit
+${alignc}${voffset 8}${color1}${font Xolonium:size=12}${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-26}
+${alignr 672}${voffset -69}${color0}${font Xolonium:size=7}${exec echo "scale=1; $((`cpufreq-info -c 2 -f`)) / 1000 / 1000" | bc | awk '{printf "%1.1f\n", $0}'} GHz
+${alignr 672}${voffset 7}${color1}${font Xolonium:size=7}${exec sensors | grep "Core 2:" | cut -c17-23}
+${alignr 1048}${voffset 9}${color0}${font Xolonium:size=7}${exec echo "scale=1; $((`cpufreq-info -c 1 -f`)) / 1000 / 1000" | bc | awk '{printf "%1.1f\n", $0}'} GHz
+${alignr 1048}${voffset 7}${color1}${font Xolonium:size=7}${exec sensors | grep "Core 1:" | cut -c17-23}
+${alignr 672}${voffset -33}${color0}${font Xolonium:size=7}${exec echo "scale=1; $((`cpufreq-info -c 3 -f`)) / 1000 / 1000" | bc | awk '{printf "%1.1f\n", $0}'} GHz
+${alignr 672}${voffset 7}${color1}${font Xolonium:size=7}${exec sensors | grep "Core 3:" | cut -c17-23}
+${alignc 386}${voffset -30}${color0}${font Xolonium:size=16}${cpu cpu2} %
+${alignc 386}${voffset -7}${font Xolonium:Bold:size=7}CPU2 LOADED
+${alignc -381}${voffset -45}${font Xolonium:size=16}${cpu cpu4} %
+${alignc -381}${voffset -7}${font Xolonium:Bold:size=7}CPU4 LOADED
+]];

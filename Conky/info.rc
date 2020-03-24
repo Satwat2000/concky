@@ -1,0 +1,64 @@
+conky.config = {
+-- Conky settings --
+    update_interval = 1,							--frissítési idővallum másodpercben
+    background = true,								--áttetsző háttér
+    cpu_avg_samples = 2,							--cpu pontosabb monitorozásához
+    net_avg_samples = 2,							--internet pontosabb monitorozása
+    diskio_avg_samples = 2, 						--meghajtó pontosabb monitorozásához
+    override_utf8_locale = true,					--karakterkódolás felülbírálása
+    double_buffer = true,							--nem villodzik az ablak
+    no_buffers  = true,
+    text_buffer_size = 256, 						--szöveg buffer mérete
+    imlib_cache_size = 10,
+    max_user_text = 15000,
+    format_human_readable = true,					--mértékegységek nem bájtokban
+
+-- Window specifications --
+    own_window = true,  							--saját ablakbeállítások bekapcsolása
+    own_window_type = 'normal',   					--ablaktípusok, override=ablakmenedzser szabályi nem vonatkoznak rá, desktop=díszítés nélküli panel=mindig felül,  dock=mindig felül, normal=normál
+    own_window_transparent = false,  				--conky ablak átlátszóvá válik
+    own_window_argb_visual = true,  				--átlátszó ablak
+    own_window_argb_value = 255,      				--átlátszóság mértéke 0-255
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	--ablak tulajdonságai below=alultartás skip_taskbar=tálca mellőzése undecorated=keret és gombok eltávolítása override=ablakkezelő felülbírálása sticky=minden munkaterületen
+    own_window_title = 'info',
+    minimum_width = 449,        					--minimum szélesség
+    minimum_height = 451, 							--minimum magasság
+    alignment = 'top_left', 						--jobb felső sarokba igazít
+    gap_x = 735,  								    --x irányba eltolás
+    gap_y = 0, 	    							    --y irányba eltolás
+
+-- Graphics settings --
+    draw_shades = false, 							--szöveg árnyékolása
+    draw_outline = false,							--körülrajzolás
+    draw_borders = false,							--téglalap alakú keretet rajzol
+    draw_graph_borders = false, 					--keret a grafikon köré
+    border_width = 0, 								--keret vastagsága
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+
+-- Text settings --
+    use_xft = true, 								--élsimítás
+    font = 'Ubuntu:size=7',          				--alapértelmezett betűtípus
+    color0 = 'C8C8C8',								--előre meghatározott szín --szürke
+    color1 = 'c7282d',                              --bordó
+    color2 = '0c8077',                              --acélkék
+
+
+};
+
+conky.text = [[
+${image ~/Conky/images/info.png -s 449x451}
+${image ~/Conky/images/avatar.png -p 168,170 -s 113x113}
+${goto 40}${font Xolonium:size=9}${execi 6000 lsb_release -d | grep 'Descr'|awk {'print $2 " " $3" " $4" " $5'}}${alignr 40}${execi 65000 lsb_release -cs | awk '{print $1}'}
+${goto 50}${voffset 59}Kernel${alignr 50}${font Xolonium:size=8}${exec uname -r}
+${goto 50}${voffset 19}Desktop${alignr 50}Plasma ${execi 65000 plasmashell -v | awk '{print $2}'}
+${goto 50}${voffset 20}Frameworks${alignr 50}${execi 65000 kf5-config --version | grep KDE | awk '{print $3}'}
+${goto 50}${voffset 20}Qt version${alignr 50}${execi 65000 kf5-config --version | grep Qt | awk '{print $2}'}
+${goto 50}${voffset 20}Uptime${alignr 50}${uptime}
+${alignc}${voffset 30}${execi 60 who | awk '{print $1}' | sort -u | tr '\n' ',' | sed -e 's/,$//' -e 's/,/, /g'}
+${alignc}${voffset 30}${font Xolonium:bold:size=16}${time %H:%M}
+${alignc}${voffset -10}${font Xolonium:bold:size=8}${time %S}
+${alignc}${voffset 20}${font Xolonium:bold:size=9}${time %Y %B %d}
+${alignc}${font Xolonium:bold:size=7}${time %A}
+]];

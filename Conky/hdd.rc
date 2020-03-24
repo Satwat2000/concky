@@ -1,0 +1,70 @@
+conky.config = {
+-- Conky settings --
+    update_interval = 1,							--frissítési idővallum másodpercben
+    background = true,								--áttetsző háttér
+    cpu_avg_samples = 2,							--cpu pontosabb monitorozásához
+    net_avg_samples = 2,							--internet pontosabb monitorozása
+    diskio_avg_samples = 2, 						--meghajtó pontosabb monitorozásához
+    override_utf8_locale = true,					--karakterkódolás felülbírálása
+    double_buffer = true,							--nem villodzik az ablak
+    no_buffers  = true,
+    text_buffer_size = 256, 						--szöveg buffer mérete
+    imlib_cache_size = 10,
+    max_user_text = 15000,
+    format_human_readable = true,					--mértékegységek nem bájtokban
+
+-- Window specifications --
+    own_window = true,  							--saját ablakbeállítások bekapcsolása
+    own_window_type = 'normal',   					--ablaktípusok, override=ablakmenedzser szabályi nem vonatkoznak rá, desktop=díszítés nélküli panel=mindig felül,  dock=mindig felül, normal=normál
+    own_window_transparent = false,  				--conky ablak átlátszóvá válik
+    own_window_argb_visual = true,  				--átlátszó ablak
+    own_window_argb_value = 255,      				--átlátszóság mértéke 0-255
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	--ablak tulajdonságai below=alultartás skip_taskbar=tálca mellőzése undecorated=keret és gombok eltávolítása override=ablakkezelő felülbírálása sticky=minden munkaterületen
+    own_window_title = 'hdd',
+    minimum_width = 734,        					--minimum szélesség
+    minimum_height = 201, 							--minimum magasság
+    alignment = 'top_left', 						--jobb felső sarokba igazít
+    gap_x = 0,  								    --x irányba eltolás
+    gap_y = 250, 	    							    --y irányba eltolás
+
+-- Graphics settings --
+    draw_shades = false, 							--szöveg árnyékolása
+    draw_outline = false,							--körülrajzolás
+    draw_borders = false,							--téglalap alakú keretet rajzol
+    draw_graph_borders = false, 					--keret a grafikon köré
+    border_width = 0, 								--keret vastagsága
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+    
+-- Text settings --
+    use_xft = true, 								--élsimítás
+    font = 'Ubuntu:size=7',          				--alapértelmezett betűtípus
+    color0 = 'C8C8C8',								--előre meghatározott szín --szürke
+    color1 = 'c7282d',                              --bordó
+    color2 = '0c8077',                              --acélkék
+
+   
+    lua_load = '~/Conky/lua/hdd.lua',
+    lua_draw_hook_pre = 'main_bars',
+};
+
+conky.text = [[
+${image ~/Conky/images/hdd.png -s 734x201}
+${goto 645}${voffset 24}${color}DiskIO
+${goto 603}${voffset -1}${diskiograph sda 27,120 000000 0c8077}
+${goto 603}${voffset -39}${diskiograph sdb 27,120 000000 C8C8C8}
+${alignc 28}${voffset -1}${color2}sda: WD Green M.2 2280 SSD
+${goto 195}${voffset -6}${color}${font Xolonium:size=7}Total${alignr 78}Used
+${alignr 14}${voffset -13}Free
+${alignc 28}${voffset -5}${color0}sdb: Hitachi Travelstar 7K1000
+${goto 100}${voffset -1}${color}Root${goto 180}${fs_size /}${alignr 78}${fs_used /}
+${alignr 15}${voffset -13}${fs_free /}
+${goto 552}${voffset -6}${color1}${execi 10 hddtemp /dev/sda |cut -c35-39}
+${goto 100}${voffset -1}${color}Home${goto 180}${fs_size /home/met}${alignr 78}${fs_used /home/met}
+${alignr 15}${voffset -13}${fs_free /home/met}
+${goto 100}${voffset 6}Data${goto 180}${fs_size /media/met/Data}${alignr 78}${fs_used /media/met/Data}
+${alignr 15}${voffset -13}${fs_free /media/met/Data}
+${goto 552}${voffset -6}${color1}${execi 10 hddtemp /dev/sdb |cut -c33-37}
+${voffset -50}
+]];

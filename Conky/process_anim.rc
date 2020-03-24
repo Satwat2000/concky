@@ -1,0 +1,60 @@
+conky.config = {
+-- Conky settings --
+    update_interval = 0.2,							--frissítési idővallum másodpercben
+    background = true,								--áttetsző háttér
+    cpu_avg_samples = 2,							--cpu pontosabb monitorozásához
+    net_avg_samples = 2,							--internet pontosabb monitorozása
+    diskio_avg_samples = 2, 						--meghajtó pontosabb monitorozásához
+    override_utf8_locale = true,					--karakterkódolás felülbírálása
+    double_buffer = true,							--nem villodzik az ablak
+    no_buffers  = true,
+    text_buffer_size = 256, 						--szöveg buffer mérete
+    imlib_cache_size = 10,
+    max_user_text = 15000,
+    format_human_readable = true,					--mértékegységek nem bájtokban
+
+-- Window specifications --
+    own_window = true,  							--saját ablakbeállítások bekapcsolása
+    own_window_type = 'normal',   					--ablaktípusok, override=ablakmenedzser szabályi nem vonatkoznak rá, desktop=díszítés nélküli panel=mindig felül,  dock=mindig felül, normal=normál
+    own_window_transparent = false,  				--conky ablak átlátszóvá válik
+    own_window_argb_visual = true,  				--átlátszó ablak
+    own_window_argb_value = 0,      				--átlátszóság mértéke 0-255
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	--ablak tulajdonságai below=alultartás skip_taskbar=tálca mellőzése undecorated=keret és gombok eltávolítása override=ablakkezelő felülbírálása sticky=minden munkaterületen
+    own_window_title = 'process_anim',
+    minimum_width = 798,        					--minimum szélesség
+    minimum_height = 412, 							--minimum magasság
+    alignment = 'top_left', 						--jobb felső sarokba igazít
+    gap_x = 111,  								    --x irányba eltolás
+    gap_y = 632, 	    							    --y irányba eltolás
+
+-- Graphics settings --
+    draw_shades = false, 							--szöveg árnyékolása
+    draw_outline = false,							--körülrajzolás
+    draw_borders = false,							--téglalap alakú keretet rajzol
+    draw_graph_borders = false, 					--keret a grafikon köré
+    border_width = 0, 								--keret vastagsága
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+
+-- Text settings --
+    use_xft = true, 								--élsimítás
+    font = 'Ubuntu:size=7',          				--alapértelmezett betűtípus
+
+    lua_load = '~/Conky/lua/draw-bk.lua',
+
+};
+
+conky.text = [[
+${if_updatenr 01}${lua conky_draw_bg 1 463 78 170 1 0x5e5e5e 1}${endif}${if_updatenr 02}${lua conky_draw_bg 1 441 78 170 1 0x5e5e5e 1}${endif}${if_updatenr 03}${lua conky_draw_bg 1 399 78 170 1 0x5e5e5e 1}${endif}${if_updatenr 04}${lua conky_draw_bg 1 357 78 170 1 0x5e5e5e 1}${endif}
+${if_updatenr 05}${lua conky_draw_bg 1 315 78 170 1 0x5e5e5e 1}${endif}${if_updatenr 06}${lua conky_draw_bg 1 273 78 170 1 0x5e5e5e 1}${endif}${if_updatenr 07}${lua conky_draw_bg 1 231 78 170 1 0x5e5e5e 1}${endif}${if_updatenr 08}${lua conky_draw_bg 1 189 78 170 1 0x5e5e5e 1}${endif}
+${if_updatenr 09}${lua conky_draw_bg 1 147 78 170 1 0x5e5e5e 1}${endif}${if_updatenr 10}${lua conky_draw_bg 1 105 78 170 1 0x5e5e5e 1}${endif}${if_updatenr 11}${lua conky_draw_bg 1 63 78 170 1 0x5e5e5e 1}${endif}${if_updatenr 12}${lua conky_draw_bg 1 39 78 152 1 0x5e5e5e 1}${lua conky_draw_bg 1 39 78 1 18 0x5e5e5e 1}${endif}
+${if_updatenr 13}${lua conky_draw_bg 1 39 78 110 1 0x5e5e5e 1}${lua conky_draw_bg 1 39 78 1 60 0x5e5e5e 1}${endif}${if_updatenr 14}${lua conky_draw_bg 1 39 78 68 1 0x5e5e5e 1}${lua conky_draw_bg 1 39 78 1 102 0x5e5e5e 1}${endif}${if_updatenr 15}${lua conky_draw_bg 1 39 78 26 1 0x5e5e5e 1}${lua conky_draw_bg 1 39 78 1 164 0x5e5e5e 1}${endif}${if_updatenr 16}${lua conky_draw_bg 1 39 114 1 170 0x5e5e5e 1}${endif}
+${if_updatenr 17}${lua conky_draw_bg 1 39 156 1 170 0x5e5e5e 1}${endif}${if_updatenr 18}${lua conky_draw_bg 1 39 198 1 131 0x5e5e5e 1}${lua conky_draw_bg 1 39 328 39 1 0x5e5e5e 1}${endif}${if_updatenr 19}${lua conky_draw_bg 1 39 240 1 89 0x5e5e5e 1}${lua conky_draw_bg 1 39 328 81 1 0x5e5e5e 1}${endif}${if_updatenr 20}${lua conky_draw_bg 1 39 2872 1 47 0x5e5e5e 1}${lua conky_draw_bg 1 39 328 123 1 0x5e5e5e 1}${endif}
+${if_updatenr 21}${lua conky_draw_bg 1 39 328 170 1 0x5e5e5e 1}${endif}${if_updatenr 22}${lua conky_draw_bg 1 81 328 170 1 0x5e5e5e 1}${endif}${if_updatenr 23}${lua conky_draw_bg 1 123 328 170 1 0x5e5e5e 1}${endif}${if_updatenr 24}${lua conky_draw_bg 1 165 328 170 1 0x5e5e5e 1}${endif}
+${if_updatenr 25}${lua conky_draw_bg 1 207 328 170 1 0x5e5e5e 1}${endif}${if_updatenr 26}${lua conky_draw_bg 1 249 328 170 1 0x5e5e5e 1}${endif}${if_updatenr 27}${lua conky_draw_bg 1 291 328 170 1 0x5e5e5e 1}${endif}${if_updatenr 28}${lua conky_draw_bg 1 333 328 170 1 0x5e5e5e 1}${endif}
+${if_updatenr 29}${lua conky_draw_bg 1 375 328 170 1 0x5e5e5e 1}${endif}${if_updatenr 30}${lua conky_draw_bg 1 417 328 170 1 0x5e5e5e 1}${endif}${if_updatenr 31}${lua conky_draw_bg 1 459 328 170 1 0x5e5e5e 1}${endif}${if_updatenr 32}${lua conky_draw_bg 1 501 328 144 1 0x5e5e5e 1}${lua conky_draw_bg 1 644 302 1 26 0x5e5e5e 1}${endif}
+${if_updatenr 33}${lua conky_draw_bg 1 543 328 102 1 0x5e5e5e 1}${lua conky_draw_bg 1 644 260 1 68 0x5e5e5e 1}${endif}${if_updatenr 34}${lua conky_draw_bg 1 585 328 60 1 0x5e5e5e 1}${lua conky_draw_bg 1 644 218 1 110 0x5e5e5e 1}${endif}${if_updatenr 35}${lua conky_draw_bg 1 627 328 18 1 0x5e5e5e 1}${lua conky_draw_bg 1 644 176 1 152 0x5e5e5e 1}${endif}${if_updatenr 36}${lua conky_draw_bg 1 644 131 1 170 0x5e5e5e 1}${endif}
+${if_updatenr 37}${lua conky_draw_bg 1 644 90 1 170 0x5e5e5e 1}${endif}${if_updatenr 38}${lua conky_draw_bg 1 644 90 1 161 0x5e5e5e 1}${lua conky_draw_bg 1 622 78 10 1 0x5e5e5e 1}${endif}${if_updatenr 39}${lua conky_draw_bg 1 644 90 1 119 0x5e5e5e 1}${lua conky_draw_bg 1 580 78 52 1 0x5e5e5e 1}${endif}${if_updatenr 40}${lua conky_draw_bg 1 644 90 1 77 0x5e5e5e 1}${lua conky_draw_bg 1 538 78 94 1 0x5e5e5e 1}${endif}
+${if_updatenr 41}${lua conky_draw_bg 1 644 90 1 35 0x5e5e5e 1}${lua conky_draw_bg 1 496 78 136 1 0x5e5e5e 1}${endif}
+]];

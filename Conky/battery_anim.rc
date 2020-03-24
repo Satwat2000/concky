@@ -1,0 +1,58 @@
+conky.config = {
+-- Conky settings --
+    update_interval = 0.1,							--frissítési idővallum másodpercben
+    background = true,								--áttetsző háttér
+    cpu_avg_samples = 2,							--cpu pontosabb monitorozásához
+    net_avg_samples = 2,							--internet pontosabb monitorozása
+    diskio_avg_samples = 2, 						--meghajtó pontosabb monitorozásához
+    override_utf8_locale = true,					--karakterkódolás felülbírálása
+    double_buffer = true,							--nem villodzik az ablak
+    no_buffers  = true,
+    text_buffer_size = 256, 						--szöveg buffer mérete
+    imlib_cache_size = 10,
+    max_user_text = 15000,
+    format_human_readable = true,					--mértékegységek nem bájtokban
+
+-- Window specifications --
+    own_window = true,  							--saját ablakbeállítások bekapcsolása
+    own_window_type = 'normal',   					--ablaktípusok, override=ablakmenedzser szabályi nem vonatkoznak rá, desktop=díszítés nélküli panel=mindig felül,  dock=mindig felül, normal=normál
+    own_window_transparent = false,  				--conky ablak átlátszóvá válik
+    own_window_argb_visual = true,  				--átlátszó ablak
+    own_window_argb_value = 0,      				--átlátszóság mértéke 0-255
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	--ablak tulajdonságai below=alultartás skip_taskbar=tálca mellőzése undecorated=keret és gombok eltávolítása override=ablakkezelő felülbírálása sticky=minden munkaterületen
+    own_window_title = 'battery_anim',
+    minimum_width = 310,        					--minimum szélesség
+    minimum_height = 437, 							--minimum magasság
+    alignment = 'top_left', 						--jobb felső sarokba igazít
+    gap_x = 805,  								    --x irányba eltolás
+    gap_y = 597, 	    							    --y irányba eltolás
+
+-- Graphics settings --
+    draw_shades = false, 							--szöveg árnyékolása
+    draw_outline = false,							--körülrajzolás
+    draw_borders = false,							--téglalap alakú keretet rajzol
+    draw_graph_borders = false, 					--keret a grafikon köré
+    border_width = 0, 								--keret vastagsága
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+
+-- Text settings --
+    use_xft = true, 								--élsimítás
+    font = 'Ubuntu:size=7',          				--alapértelmezett betűtípus
+
+    lua_load = '~/Conky/lua/draw-bk.lua',
+    
+};
+
+conky.text = [[
+${if_updatenr 01}${image ~/Conky/images/battery/00.png -p 138,430 -s 34x7}${endif}${if_updatenr 02}${image ~/Conky/images/battery/01.png -p 138,430 -s 34x7}${endif}${if_updatenr 03}${image ~/Conky/images/battery/02.png -p 138,430 -s 34x7}${endif}${if_updatenr 04}${image ~/Conky/images/battery/03.png -p 138,430 -s 34x7}${endif}${if_updatenr 05}${image ~/Conky/images/battery/04.png -p 138,430 -s 34x7}${endif}
+${if_updatenr 06}${image ~/Conky/images/battery/05.png -p 138,430 -s 34x7}${endif}${if_updatenr 07}${image ~/Conky/images/battery/06.png -p 138,430 -s 34x7}${endif}${if_updatenr 08}${image ~/Conky/images/battery/07.png -p 138,430 -s 34x7}${endif}${if_updatenr 09}${image ~/Conky/images/battery/08.png -p 138,430 -s 34x7}${endif}${if_updatenr 10}${image ~/Conky/images/battery/09.png -p 138,430 -s 34x7}${endif}
+${if_updatenr 11}${image ~/Conky/images/battery/10.png -p 138,430 -s 34x7}${endif}${if_updatenr 12}${image ~/Conky/images/battery/11.png -p 138,430 -s 34x7}${endif}${if_updatenr 13}${image ~/Conky/images/battery/12.png -p 138,430 -s 34x7}${endif}${if_updatenr 14}${image ~/Conky/images/battery/13.png -p 138,430 -s 34x7}${endif}${if_updatenr 15}${image ~/Conky/images/battery/14.png -p 138,430 -s 34x7}${endif}
+${if_updatenr 16}${image ~/Conky/images/battery/15.png -p 138,430 -s 34x7}${endif}${if_updatenr 17}${image ~/Conky/images/battery/16.png -p 138,430 -s 34x7}${endif}${if_updatenr 18}${image ~/Conky/images/battery/17.png -p 138,430 -s 34x7}${endif}${if_updatenr 19}${image ~/Conky/images/battery/18.png -p 138,430 -s 34x7}${endif}${if_updatenr 20}${image ~/Conky/images/battery/19.png -p 138,430 -s 34x7}${endif}
+${if_updatenr 21}${image ~/Conky/images/battery/20.png -p 138,430 -s 34x7}${endif}${if_updatenr 22}${image ~/Conky/images/battery/21.png -p 138,430 -s 34x7}${endif}${if_updatenr 23}${image ~/Conky/images/battery/22.png -p 138,430 -s 34x7}${endif}${if_updatenr 24}${image ~/Conky/images/battery/23.png -p 138,430 -s 34x7}${endif}${if_updatenr 25}${image ~/Conky/images/battery/24.png -p 138,430 -s 34x7}${endif}
+${if_updatenr 26}${image ~/Conky/images/battery/25.png -p 138,430 -s 34x7}${endif}${if_updatenr 27}${image ~/Conky/images/battery/26.png -p 138,430 -s 34x7}${endif}${if_updatenr 28}${image ~/Conky/images/battery/27.png -p 138,430 -s 34x7}${endif}${if_updatenr 29}${image ~/Conky/images/battery/28.png -p 138,430 -s 34x7}${endif}${if_updatenr 30}${image ~/Conky/images/battery/29.png -p 138,430 -s 34x7}${endif}
+${if_updatenr 31}${image ~/Conky/images/battery/30.png -p 138,430 -s 34x7}${endif}${if_updatenr 32}${image ~/Conky/images/battery/31.png -p 138,430 -s 34x7}${endif}${if_updatenr 33}${image ~/Conky/images/battery/32.png -p 138,430 -s 34x7}${endif}${if_updatenr 34}${image ~/Conky/images/battery/33.png -p 138,430 -s 34x7}${endif}${if_updatenr 35}${image ~/Conky/images/battery/34.png -p 138,430 -s 34x7}${endif}
+${if_updatenr 36}${image ~/Conky/images/battery/35.png -p 138,430 -s 34x7}${endif}${if_updatenr 37}${image ~/Conky/images/battery/36.png -p 138,430 -s 34x7}${endif}${if_updatenr 38}${image ~/Conky/images/battery/37.png -p 138,430 -s 34x7}${endif}${if_updatenr 39}${image ~/Conky/images/battery/38.png -p 138,430 -s 34x7}${endif}${if_updatenr 40}${image ~/Conky/images/battery/39.png -p 138,430 -s 34x7}${endif}
+${if_updatenr 41}${image ~/Conky/images/battery/40.png -p 138,430 -s 34x7}${endif}${if_updatenr 42}${image ~/Conky/images/battery/41.png -p 138,430 -s 34x7}${endif}${if_updatenr 43}${image ~/Conky/images/battery/42.png -p 138,430 -s 34x7}${endif}${if_updatenr 44}${image ~/Conky/images/battery/43.png -p 138,430 -s 34x7}${endif}${if_updatenr 45}${image ~/Conky/images/battery/44.png -p 138,430 -s 34x7}${endif}${if_updatenr 46}${image ~/Conky/images/battery/45.png -p 138,430 -s 34x7}${endif}
+]];
