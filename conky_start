@@ -1,0 +1,27 @@
+#!/bin/bash
+
+sleep 1
+conky -c ~/.conky/Conky/down.rc &
+conky -c ~/.conky/Conky/info.rc &
+conky -c ~/.conky/Conky/up.rc &
+sleep 1
+conky -c ~/.conky/Conky/hdd.rc &
+conky -c ~/.conky/Conky/cpu_left.rc &
+conky -c ~/.conky/Conky/cpu_center.rc &
+conky -c ~/.conky/Conky/cpu_right.rc &
+conky -c ~/.conky/Conky/mem.rc &
+sleep 1
+conky -c ~/.conky/Conky/down_anim.rc &
+conky -c ~/.conky/Conky/up_anim.rc &
+conky -c ~/.conky/Conky/hdd_anim.rc &
+conky -c ~/.conky/Conky/mem_anim.rc &
+conky -c ~/.conky/Conky/cpu_anim.rc &
+conky -c ~/.conky/Conky/weather_anim.rc &
+sleep 1
+conky -c ~/.conky/Conky/process.rc &
+conky -c ~/.conky/Conky/battery.rc &
+conky -c ~/.conky/Conky/weather.rc &
+sleep 1
+conky -c ~/.conky/Conky/battery_anim.rc &
+conky -c ~/.conky/Conky/process_anim.rc &
+exit

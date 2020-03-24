@@ -1,0 +1,66 @@
+conky.config = {
+-- Conky settings --
+    update_interval = 1,							--frissítési idővallum másodpercben
+    background = true,								--áttetsző háttér
+    cpu_avg_samples = 2,							--cpu pontosabb monitorozásához
+    net_avg_samples = 2,							--internet pontosabb monitorozása
+    diskio_avg_samples = 2, 						--meghajtó pontosabb monitorozásához
+    override_utf8_locale = true,					--karakterkódolás felülbírálása
+    double_buffer = true,							--nem villodzik az ablak
+    no_buffers  = true,
+    text_buffer_size = 256, 						--szöveg buffer mérete
+    imlib_cache_size = 10,
+    max_user_text = 15000,
+    format_human_readable = true,					--mértékegységek nem bájtokban
+
+-- Window specifications --
+    own_window = true,  							--saját ablakbeállítások bekapcsolása
+    own_window_type = 'normal',   					--ablaktípusok, override=ablakmenedzser szabályi nem vonatkoznak rá, desktop=díszítés nélküli panel=mindig felül,  dock=mindig felül, normal=normál
+    own_window_transparent = false,  				--conky ablak átlátszóvá válik
+    own_window_argb_visual = true,  				--átlátszó ablak
+    own_window_argb_value = 255,      				--átlátszóság mértéke 0-255
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	--ablak tulajdonságai below=alultartás skip_taskbar=tálca mellőzése undecorated=keret és gombok eltávolítása override=ablakkezelő felülbírálása sticky=minden munkaterületen
+    own_window_title = 'process',
+    minimum_width = 797,        					--minimum szélesség
+    minimum_height = 412, 							--minimum magasság
+    alignment = 'top_left', 						--jobb felső sarokba igazít
+    gap_x = 0,  								    --x irányba eltolás
+    gap_y = 632, 	    							    --y irányba eltolás
+
+-- Graphics settings --
+    draw_shades = false, 							--szöveg árnyékolása
+    draw_outline = false,							--körülrajzolás
+    draw_borders = false,							--téglalap alakú keretet rajzol
+    draw_graph_borders = false, 					--keret a grafikon köré
+    border_width = 0, 								--keret vastagsága
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+
+-- Text settings --
+    use_xft = true, 								--élsimítás
+    font = 'Ubuntu:size=7',          				--alapértelmezett betűtípus
+    color0 = 'C8C8C8',								--előre meghatározott szín --szürke
+    color1 = 'c7282d',                              --bordó
+    color2 = '0c8077',                              --acélkék
+
+};
+
+conky.text = [[
+${image ~/Conky/images/process.png -s 797x412}
+${goto 180}${voffset 68}${font Xolonium:underline:size=8}Mem usage
+${image ~/Conky/images/p2.png -p 153,95 -s 600x16}${goto 200}${voffset 1}Pid${goto 270}Name${goto 450}Percent${goto 570}Size${goto 680}User
+${goto 180}${voffset 3}1${if_match "${top_mem user 1}" == "root"}${image ~/Conky/images/p1.png -p 153,113 -s 600x16}${color0}${goto 200}${top_mem pid 1}${goto 270}${top_mem name 1}${goto 450}${top_mem mem 1} %${goto 570}${top_mem mem_res 1}$${goto 680}{top_mem user 1}${else}${image ~/Conky/images/p2.png -p 153,113 -s 600x16}${color2}${goto 200}${top_mem pid 1}${goto 270}${top_mem name 1}${goto 450}${top_mem mem 1} %${goto 570}${top_mem mem_res 1}${goto 680}${top_mem user 1}${endif}${color}
+${goto 180}${voffset 3}2${if_match "${top_mem user 2}" == "root"}${image ~/Conky/images/p1.png -p 153,131 -s 600x16}${color0}${goto 200}${top_mem pid 2}${goto 270}${top_mem name 2}${goto 450}${top_mem mem 2} %${goto 570}${top_mem mem_res 2}${goto 680}${top_mem user 2}${else}${image ~/Conky/images/p2.png -p 153,131 -s 600x16}${color2}${goto 200}${top_mem pid 2}${goto 270}${top_mem name 2}${goto 450}${top_mem mem 2} %${goto 570}${top_mem mem_res 2}${goto 680}${top_mem user 2}${endif}${color}
+${goto 180}${voffset 3}3${if_match "${top_mem user 3}" == "root"}${image ~/Conky/images/p1.png -p 153,149 -s 600x16}${color0}${goto 200}${top_mem pid 3}${goto 270}${top_mem name 3}${goto 450}${top_mem mem 3} %${goto 570}${top_mem mem_res 3}${goto 680}${top_mem user 3}${else}${image ~/Conky/images/p2.png -p 153,149 -s 600x16}${color2}${goto 200}${top_mem pid 3}${goto 270}${top_mem name 3}${goto 450}${top_mem mem 3} %${goto 570}${top_mem mem_res 3}${goto 680}${top_mem user 3}${endif}${color}
+${goto 180}${voffset 3}4${if_match "${top_mem user 4}" == "root"}${image ~/Conky/images/p1.png -p 153,167 -s 600x16}${color0}${goto 200}${top_mem pid 4}${goto 270}${top_mem name 4}${goto 450}${top_mem mem 4} %${goto 570}${top_mem mem_res 4}${goto 680}${top_mem user 4}${else}${image ~/Conky/images/p2.png -p 153,167 -s 600x16}${color2}${goto 200}${top_mem pid 4}${goto 270}${top_mem name 4}${goto 450}${top_mem mem 4} %${goto 570}${top_mem mem_res 4}${goto 680}${top_mem user 4}${endif}${color}
+${goto 180}${voffset 3}5${if_match "${top_mem user 5}" == "root"}${image ~/Conky/images/p1.png -p 153,185 -s 600x16}${color0}${goto 200}${top_mem pid 5}${goto 270}${top_mem name 5}${goto 450}${top_mem mem 5} %${goto 570}${top_mem mem_res 5}${goto 680}${top_mem user 5}${else}${image ~/Conky/images/p2.png -p 153,185 -s 600x16}${color2}${goto 200}${top_mem pid 5}${goto 270}${top_mem name 5}${goto 450}${top_mem mem 5} %${goto 570}${top_mem mem_res 5}${goto 680}${top_mem user 5}${endif}${color}
+${goto 180}${voffset 3}Cpu usage
+${image ~/Conky/images/p2.png -p 153,219 -s 600x16}${goto 200}${voffset 1}Pid${goto 270}Name${goto 450}Percent${goto 570}Size${goto 680}User
+${goto 180}${voffset 3}1${if_match "${top user 1}" == "root"}${image ~/Conky/images/p1.png -p 153,237 -s 600x16}${color0}${goto 200}${top pid 1}${goto 270}${top name 1}${goto 450}${top cpu 1} %${goto 570}${top mem_res 1}${goto 680}${top user 1}${else}${image ~/Conky/images/p2.png -p 153,237 -s 600x16}${color2}${goto 200}${top pid 1}${goto 270}${top name 1}${goto 450}${top cpu 1} %${goto 570}${top mem_res 1}${goto 680}${top user 1}${endif}${color}
+${goto 180}${voffset 3}2${if_match "${top user 2}" == "root"}${image ~/Conky/images/p1.png -p 153,255 -s 600x16}${color0}${goto 200}${top pid 2}${goto 270}${top name 2}${goto 450}${top cpu 2} %${goto 570}${top mem_res 2}${goto 680}${top user 2}${else}${image ~/Conky/images/p2.png -p 153,255 -s 600x16}${color2}${goto 200}${top pid 2}${goto 270}${top name 2}${goto 450}${top cpu 2} %${goto 570}${top mem_res 2}${goto 680}${top user 2}${endif}${color}
+${goto 180}${voffset 3}3${if_match "${top user 3}" == "root"}${image ~/Conky/images/p1.png -p 153,273 -s 600x16}${color0}${goto 200}${top pid 3}${goto 270}${top name 3}${goto 450}${top cpu 3} %${goto 570}${top mem_res 3}${goto 680}${top user 3}${else}${image ~/Conky/images/p2.png -p 153,273 -s 600x16}${color2}${goto 200}${top pid 3}${goto 270}${top name 3}${goto 450}${top cpu 3} %${goto 570}${top mem_res 3}${goto 680}${top user 3}${endif}${color}
+${goto 180}${voffset 3}4${if_match "${top user 4}" == "root"}${image ~/Conky/images/p1.png -p 153,291 -s 600x16}${color0}${goto 200}${top pid 4}${goto 270}${top name 4}${goto 450}${top cpu 4} %${goto 570}${top mem_res 4}${goto 680}${top user 4}${else}${image ~/Conky/images/p2.png -p 153,291 -s 600x16}${color2}${goto 200}${top pid 4}${goto 270}${top name 4}${goto 450}${top cpu 4} %${goto 570}${top mem_res 4}${goto 680}${top user 4}${endif}${color}
+${goto 180}${voffset 3}5${if_match "${top user 5}" == "root"}${image ~/Conky/images/p1.png -p 153,309 -s 600x16}${color0}${goto 200}${top pid 5}${goto 270}${top name 5}${goto 450}${top cpu 5} %${goto 570}${top mem_res 5}${goto 680}${top user 5}${else}${image ~/Conky/images/p2.png -p 153,309 -s 600x16}${color2}${goto 200}${top pid 5}${goto 270}${top name 5}${goto 450}${top cpu 5} %${goto 570}${top mem_res 5}${goto 680}${top user 5}${endif}${color}
+#Total: ${processes} - Runing:${running_processes}
+]];

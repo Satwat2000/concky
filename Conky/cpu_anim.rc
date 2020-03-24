@@ -1,0 +1,59 @@
+conky.config = {
+-- Conky settings --
+    update_interval = 0.1,							--frissítési idővallum másodpercben
+    background = true,								--áttetsző háttér
+    cpu_avg_samples = 2,							--cpu pontosabb monitorozásához
+    net_avg_samples = 2,							--internet pontosabb monitorozása
+    diskio_avg_samples = 2, 						--meghajtó pontosabb monitorozásához
+    override_utf8_locale = true,					--karakterkódolás felülbírálása
+    double_buffer = true,							--nem villodzik az ablak
+    no_buffers  = true,
+    text_buffer_size = 256, 						--szöveg buffer mérete
+    imlib_cache_size = 10,
+    max_user_text = 15000,
+    format_human_readable = true,					--mértékegységek nem bájtokban
+
+-- Window specifications --
+    own_window = true,  							--saját ablakbeállítások bekapcsolása
+    own_window_type = 'normal',   					--ablaktípusok, override=ablakmenedzser szabályi nem vonatkoznak rá, desktop=díszítés nélküli panel=mindig felül,  dock=mindig felül, normal=normál
+    own_window_transparent = false,  				--conky ablak átlátszóvá válik
+    own_window_argb_visual = true,  				--átlátszó ablak
+    own_window_argb_value = 0,      				--átlátszóság mértéke 0-255
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	--ablak tulajdonságai below=alultartás skip_taskbar=tálca mellőzése undecorated=keret és gombok eltávolítása override=ablakkezelő felülbírálása sticky=minden munkaterületen
+    own_window_title = 'cpu_anim',
+    minimum_width = 360,        					--minimum szélesség
+    minimum_height = 103, 							--minimum magasság
+    alignment = 'top_left', 						--jobb felső sarokba igazít
+    gap_x = 799,  								    --x irányba eltolás
+    gap_y = 491, 	    							    --y irányba eltolás
+
+-- Graphics settings --
+    draw_shades = false, 							--szöveg árnyékolása
+    draw_outline = false,							--körülrajzolás
+    draw_borders = false,							--téglalap alakú keretet rajzol
+    draw_graph_borders = false, 					--keret a grafikon köré
+    border_width = 0, 								--keret vastagsága
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+
+-- Text settings --
+    use_xft = true, 								--élsimítás
+    font = 'Ubuntu:size=7',          				--alapértelmezett betűtípus
+
+};
+
+conky.text = [[
+${if_updatenr 01}${image ~/Conky/images/cpu/00.png -s 322x92}${endif}${if_updatenr 02}${image ~/Conky/images/cpu/01.png -s 322x92}${endif}${if_updatenr 03}${image ~/Conky/images/cpu/02.png -s 322x92}${endif}${if_updatenr 04}${image ~/Conky/images/cpu/03.png -s 322x92}${endif}${if_updatenr 05}${image ~/Conky/images/cpu/04.png -s 322x92}${endif}
+${if_updatenr 06}${image ~/Conky/images/cpu/05.png -s 322x92}${endif}${if_updatenr 07}${image ~/Conky/images/cpu/06.png -s 322x92}${endif}${if_updatenr 08}${image ~/Conky/images/cpu/07.png -s 322x92}${endif}${if_updatenr 09}${image ~/Conky/images/cpu/08.png -s 322x92}${endif}${if_updatenr 10}${image ~/Conky/images/cpu/09.png -s 322x92}${endif}
+${if_updatenr 11}${image ~/Conky/images/cpu/10.png -s 322x92}${endif}${if_updatenr 12}${image ~/Conky/images/cpu/11.png -s 322x92}${endif}${if_updatenr 13}${image ~/Conky/images/cpu/12.png -s 322x92}${endif}${if_updatenr 14}${image ~/Conky/images/cpu/13.png -s 322x92}${endif}${if_updatenr 15}${image ~/Conky/images/cpu/14.png -s 322x92}${endif}
+${if_updatenr 16}${image ~/Conky/images/cpu/15.png -s 322x92}${endif}${if_updatenr 17}${image ~/Conky/images/cpu/16.png -s 322x92}${endif}${if_updatenr 18}${image ~/Conky/images/cpu/17.png -s 322x92}${endif}${if_updatenr 19}${image ~/Conky/images/cpu/18.png -s 322x92}${endif}${if_updatenr 20}${image ~/Conky/images/cpu/19.png -s 322x92}${endif}
+${if_updatenr 21}${image ~/Conky/images/cpu/20.png -s 322x92}${endif}${if_updatenr 22}${image ~/Conky/images/cpu/21.png -s 322x92}${endif}${if_updatenr 23}${image ~/Conky/images/cpu/22.png -s 322x92}${endif}${if_updatenr 24}${image ~/Conky/images/cpu/23.png -s 322x92}${endif}${if_updatenr 25}${image ~/Conky/images/cpu/24.png -s 322x92}${endif}
+${if_updatenr 26}${image ~/Conky/images/cpu/25.png -s 322x92}${endif}${if_updatenr 27}${image ~/Conky/images/cpu/26.png -s 322x92}${endif}${if_updatenr 28}${image ~/Conky/images/cpu/27.png -s 322x92}${endif}${if_updatenr 29}${image ~/Conky/images/cpu/28.png -s 322x92}${endif}${if_updatenr 30}${image ~/Conky/images/cpu/29.png -s 322x92}${endif}
+${if_updatenr 31}${image ~/Conky/images/cpu/30.png -s 322x92}${endif}${if_updatenr 32}${image ~/Conky/images/cpu/31.png -s 322x92}${endif}${if_updatenr 33}${image ~/Conky/images/cpu/32.png -s 322x92}${endif}${if_updatenr 34}${image ~/Conky/images/cpu/33.png -s 322x92}${endif}${if_updatenr 35}${image ~/Conky/images/cpu/34.png -s 322x92}${endif}
+${if_updatenr 36}${image ~/Conky/images/cpu/35.png -s 322x92}${endif}${if_updatenr 37}${image ~/Conky/images/cpu/36.png -s 322x92}${endif}${if_updatenr 38}${image ~/Conky/images/cpu/37.png -s 322x92}${endif}${if_updatenr 39}${image ~/Conky/images/cpu/38.png -s 322x92}${endif}${if_updatenr 40}${image ~/Conky/images/cpu/39.png -s 322x92}${endif}
+${if_updatenr 41}${image ~/Conky/images/cpu/40.png -s 322x92}${endif}${if_updatenr 42}${image ~/Conky/images/cpu/41.png -s 322x92}${endif}${if_updatenr 43}${image ~/Conky/images/cpu/42.png -s 322x92}${endif}${if_updatenr 44}${image ~/Conky/images/cpu/43.png -s 322x92}${endif}${if_updatenr 45}${image ~/Conky/images/cpu/44.png -s 322x92}${endif}
+${if_updatenr 46}${image ~/Conky/images/cpu/45.png -s 322x92}${endif}${if_updatenr 47}${image ~/Conky/images/cpu/46.png -s 322x92}${endif}${if_updatenr 48}${image ~/Conky/images/cpu/47.png -s 322x92}${endif}${if_updatenr 49}${image ~/Conky/images/cpu/48.png -s 322x92}${endif}${if_updatenr 50}${image ~/Conky/images/cpu/49.png -s 322x92}${endif}
+${if_updatenr 51}${image ~/Conky/images/cpu/50.png -s 322x92}${endif}${if_updatenr 52}${image ~/Conky/images/cpu/51.png -s 322x92}${endif}${if_updatenr 53}${image ~/Conky/images/cpu/52.png -s 322x92}${endif}${if_updatenr 54}${image ~/Conky/images/cpu/53.png -s 322x92}${endif}${if_updatenr 55}${image ~/Conky/images/cpu/54.png -s 322x92}${endif}
+${if_updatenr 56}${image ~/Conky/images/cpu/55.png -s 322x92}${endif}${if_updatenr 57}${image ~/Conky/images/cpu/56.png -s 322x92}${endif}${if_updatenr 58}${image ~/Conky/images/cpu/57.png -s 322x92}${endif}${if_updatenr 59}${image ~/Conky/images/cpu/58.png -s 322x92}${endif}${if_updatenr 60}${image ~/Conky/images/cpu/59.png -s 322x92}${endif}
+]];

@@ -1,0 +1,61 @@
+conky.config = {
+-- Conky settings --
+    update_interval = 0.5,							--frissítési idővallum másodpercben
+    background = true,								--áttetsző háttér
+    cpu_avg_samples = 2,							--cpu pontosabb monitorozásához
+    net_avg_samples = 2,							--internet pontosabb monitorozása
+    diskio_avg_samples = 2, 						--meghajtó pontosabb monitorozásához
+    override_utf8_locale = true,					--karakterkódolás felülbírálása
+    double_buffer = true,							--nem villodzik az ablak
+    no_buffers  = true,
+    text_buffer_size = 256, 						--szöveg buffer mérete
+    imlib_cache_size = 10,
+    max_user_text = 15000,
+    format_human_readable = true,					--mértékegységek nem bájtokban
+
+-- Window specifications --
+    own_window = true,  							--saját ablakbeállítások bekapcsolása
+    own_window_type = 'normal',   					--ablaktípusok, override=ablakmenedzser szabályi nem vonatkoznak rá, desktop=díszítés nélküli panel=mindig felül,  dock=mindig felül, normal=normál
+    own_window_transparent = false,  				--conky ablak átlátszóvá válik
+    own_window_argb_visual = true,  				--átlátszó ablak
+    own_window_argb_value = 0,      				--átlátszóság mértéke 0-255
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	--ablak tulajdonságai below=alultartás skip_taskbar=tálca mellőzése undecorated=keret és gombok eltávolítása override=ablakkezelő felülbírálása sticky=minden munkaterületen
+    own_window_title = 'net_upload_anim',
+    minimum_width = 110,        					--minimum szélesség
+    minimum_height = 103, 							--minimum magasság
+    alignment = 'top_left', 						--jobb felső sarokba igazít
+    gap_x = 1747,  								    --x irányba eltolás
+    gap_y = 49, 	    							    --y irányba eltolás
+
+-- Graphics settings --
+    draw_shades = false, 							--szöveg árnyékolása
+    draw_outline = false,							--körülrajzolás
+    draw_borders = false,							--téglalap alakú keretet rajzol
+    draw_graph_borders = false, 					--keret a grafikon köré
+    border_width = 0, 								--keret vastagsága
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+
+-- Text settings --
+    use_xft = true, 								--élsimítás
+    font = 'Ubuntu:size=7',          				--alapértelmezett betűtípus
+
+};
+
+conky.text = [[
+${if_updatenr 01}${image ~/Conky/images/net_up/00.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 02}${image ~/Conky/images/net_up/01.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 03}${image ~/Conky/images/net_up/02.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 04}${image ~/Conky/images/net_up/03.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 05}${image ~/Conky/images/net_up/04.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 06}${image ~/Conky/images/net_up/05.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 07}${image ~/Conky/images/net_up/06.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 08}${image ~/Conky/images/net_up/07.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 09}${image ~/Conky/images/net_up/08.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 10}${image ~/Conky/images/net_up/09.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 11}${image ~/Conky/images/net_up/10.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 12}${image ~/Conky/images/net_up/11.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 13}${image ~/Conky/images/net_up/12.png -s 85x103 -p 25,40}${endif}
+${if_updatenr 14}${image ~/Conky/images/net_up/13.png -s 85x103 -p 25,40}${endif}
+]];
